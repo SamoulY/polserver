@@ -31,7 +31,7 @@ addons:
     build_command_prepend: export CXX="g++-5" CC="gcc-5";cmake ../..
     build_command: make -j2
     branch_pattern: coverity
-#    notification_email:
+    notification_email: turley@polserver.com
    
 before_install:
   - cd lib
