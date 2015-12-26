@@ -47,8 +47,12 @@ script:
   - if [ "$CXX" = "clang++" ]; then 
       export CXX="clang++-3.7" CC="clang-3.7";
     fi
-  - ./build_linux.sh
+  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then 
+      ./build_linux.sh ; 
+	fi
 
   - cd ../../testsuite/escript
-  - /usr/bin/python performtests.py -c ../../pol-core/bin/ecompile -r ../../pol-core/bin/runecl
+  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then 
+       /usr/bin/python performtests.py -c ../../pol-core/bin/ecompile -r ../../pol-core/bin/runecl ;
+	fi
 
