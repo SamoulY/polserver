@@ -6,6 +6,11 @@ compiler:
   - gcc
 #  - clang
 
+env:
+  global:
+    # Coverity Scan token
+    secure: "JdTWcMl0EQHSuaT9LYFyixjVhV9270V8cLgJDBxeQ3j2s9uJ6BMAdFVNDeo1PS33YjgqbPTXbmyCklPld11H5UYtWDg5MvjYyIKro1zjy46Q3klaYGUUcmSVhvqEqtJldmngoQEVHw78sOXHnpuROt8hdtYzO38Wqgrfy3DdtVQ="
+
 addons:
   apt:
     #ref: https://github.com/travis-ci/apt-source-whitelist/blob/master/ubuntu.json
@@ -20,6 +25,13 @@ addons:
       - clang-3.7
       - cmake
       - cmake-data
+  coverity_scan:
+    project:
+      name: polserver/polserver
+    build_command_prepend: export CXX="g++-5" CC="gcc-5";cmake ../..
+    build_command: make -j2
+    branch_pattern: coverity
+#    notification_email:
    
 before_install:
   - cd lib
