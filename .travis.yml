@@ -49,10 +49,10 @@ script:
     fi
   - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then 
       ./build_linux.sh ; 
-	fi
+    fi
 
   - cd ../../testsuite/escript
   - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then 
        /usr/bin/python performtests.py -c ../../pol-core/bin/ecompile -r ../../pol-core/bin/runecl ;
-	fi
+    fi
 
